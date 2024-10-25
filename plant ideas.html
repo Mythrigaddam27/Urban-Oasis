@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 50, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #f5f5dc;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #8fbc8f;
+        }
+        input, button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #a2c4a2;
+            border-radius: 6px;
+            background-color: #f0fff0;
+            color: #2e4d2e;
+        }
+        input:focus {
+            border-color: #6b8e23;
+            outline: none;
+            box-shadow: 0 0 5px rgba(107, 142, 35, 0.5);
+        }
+        button {
+            background-color: #6b8e23;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #556b2f;
+        }
+        header {
+            background-color: #8fbc8f;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            border-bottom: 2px solid #556b2f;
+        }
+        h1 {
+            color: #556b2f;
+            text-align: center;
+        }
+        label {
+            color: #2e4d2e;
+            font-weight: bold;
+        }
+        body {
+            background-color: #f0fff0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Suggestion container */
+        #suggestionsContainer {
+            display: none;
+            margin-top: 20px;
+            background-color: #f5f5dc;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #8fbc8f;
+        }
+        #suggestionsContainer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #suggestionsContainer li {
+            padding: 8px;
+            background-color: #e6ffe6;
+            margin-bottom: 8px;
+            border: 1px solid #a2c4a2;
+            border-radius: 6px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Ideas - Urban Oasis</title>
+</head>
+<body>
+
+    <!-- Back to Home Button -->
+    <header>
+        <nav>
+            <a href="homepage.html" class="back-home-button">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Heading for Plant Ideas -->
+    <section>
+        <h1>Plant Ideas</h1>
+
+        <!-- Service Card to Open Modal -->
+        <a href="#" data-service="plant-ideas">
+            <div class="service-card">
+                <h3> Get Plant Ideas</h3>
+            </div>
+        </a>
+
+        <!-- Modal Structure -->
+        <div id="plantIdeasModal" class="modal">
+            <div class="modal-content">
+                <h2>Tell us about your garden</h2>
+                <form id="plantIdeasForm">
+                    <label for="needs">What are your gardening needs?</label>
+                    <input type="text" id="needs" name="needs" placeholder="E.g., Aesthetic, Edible plants">
+
+                    <label for="space">How much space do you have?</label>
+                    <input type="text" id="space" name="space" placeholder="E.g., Small balcony, Medium terrace">
+
+                    <label for="sunlight">How much sunlight does your garden get?</label>
+                    <input type="text" id="sunlight" name="sunlight" placeholder="E.g., Full sun, Partial shade">
+
+                    <label for="plantTypes">What types of plants do you want?</label>
+                    <input type="text" id="plantTypes" name="plantTypes" placeholder="E.g., Succulents, Flowers, Herbs">
+
+                    <label for="experience">What is your gardening experience level?</label>
+                    <input type="text" id="experience" name="experience" placeholder="E.g., Beginner, Intermediate, Expert">
+
+                    <button type="submit">Get Suggestions</button>
+                </form>
+
+                <!-- Suggestions Container -->
+                <div id="suggestionsContainer">
+                    <h3>Plant Suggestions</h3>
+                    <ul id="suggestionsList"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Show modal when 'Plant Ideas' card is clicked
+        document.querySelector('[data-service="plant-ideas"]').addEventListener('click', function() {
+            document.getElementById('plantIdeasModal').style.display = 'block';
+        });
+
+        // Generate plant suggestions based on user input
+        function generateSuggestions(needs, space, sunlight, plantTypes, experience) {
+            const suggestions = [];
+
+            // Sample logic for generating suggestions
+            if (needs.toLowerCase().includes('edible')) {
+                suggestions.push('Tomatoes', 'Herbs', 'Peppers');
+            } else if (needs.toLowerCase().includes('aesthetic')) {
+                suggestions.push('Roses', 'Orchids', 'Lavender');
+            }
+
+            if (space.toLowerCase().includes('small')) {
+                suggestions.push('Succulents', 'Potted Plants');
+            }
+
+            if (sunlight.toLowerCase().includes('full sun')) {
+                suggestions.push('Sunflowers', 'Marigolds');
+            } else if (sunlight.toLowerCase().includes('shade')) {
+                suggestions.push('Ferns', 'Hostas');
+            }
+
+            if (experience.toLowerCase() === 'beginner') {
+                suggestions.push('Snake Plant', 'Spider Plant');
+            }
+
+            return suggestions;
+        }
+
+        // Handle form submission
+        document.getElementById('plantIdeasForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const needs = document.getElementById('needs').value;
+            const space = document.getElementById('space').value;
+            const sunlight = document.getElementById('sunlight').value;
+            const plantTypes = document.getElementById('plantTypes').value;
+            const experience = document.getElementById('experience').value;
+
+            // Generate suggestions based on form input
+            const suggestions = generateSuggestions(needs, space, sunlight, plantTypes, experience);
+
+            // Display suggestions in the modal
+            const suggestionsList = document.getElementById('suggestionsList');
+            suggestionsList.innerHTML = ''; // Clear previous suggestions
+            suggestions.forEach(suggestion => {
+                const listItem = document.createElement('li');
+                listItem.textContent = suggestion;
+                suggestionsList.appendChild(listItem);
+            });
+
+            // Show the suggestions container
+            document.getElementById('suggestionsContainer').style.display = 'block';
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('plantIdeasModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

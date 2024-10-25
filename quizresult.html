@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #386641;
+            margin-top: 50px;
+        }
+
+        #result {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('leaf.jpg'); /* Adjust path as needed */
+            background-size: cover;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+            left: calc(50% - 25px); /* Adjust horizontal position */
+            top: -50px; /* Start above the viewport */
+        }
+        
+        .leaf-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Make sure leaves fall through the entire viewport */
+            overflow: hidden;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        @keyframes leaf-blast {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        .back-quiz-button {
+            display: inline-block;
+            background-color: #4CAF50; /* Earthy green for the garden theme */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-quiz-button:hover {
+            background-color: #388E3C; /* Darker green on hover */
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .back-quiz-button img {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="quiz.html" class="back-quiz-button">Back to quiz</a>
+        </nav>
+    </header>
+
+    <h1>Your Quiz Results</h1>
+    <p id="result"></p>
+
+    <!-- Leaf Animation Container -->
+    <div class="leaf-container" id="leafContainer"></div>
+    <div class="leaf-container">
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <!-- Add more leaf divs if you want more leaves to fall -->
+    </div>
+    
+
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const score = params.get('score');
+            const total = params.get('total');
+            return { score, total };
+        }
+
+        // Display the quiz result
+        const result = getQueryParams();
+        document.getElementById('result').innerHTML = `You got ${result.score} out of ${result.total} correct.`;
+          // Display leaves animation when page loads
+          document.querySelector('.leaf-container').style.display = 'block';
+            // Trigger leaf-blasting animation
+            blastLeaves();
+
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.classList.add('leaf');
+            leaf.style.left = `${Math.random() * 100}vw`;
+            leaf.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random fall speed
+            return leaf;
+        }
+
+        function blastLeaves() {
+            const leafContainer = document.getElementById('leafContainer');
+            for (let i = 0; i < 50; i++) {
+                const leaf = createLeaf();
+                leafContainer.appendChild(leaf);
+
+                setTimeout(() => {
+                    leaf.remove(); // Remove leaf after animation
+                }, 5000);
+            }
+        }
+        function showResult() {
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+        
+            for (let question in correctAnswers) {
+                if (userAnswers[question] === correctAnswers[question]) {
+                    score++;
+                }
+            }
+        
+            // Redirect to quizresult.html with the score in the URL
+            window.location.href = `quizresult.html?score=${score}&total=${totalQuestions}`;
+        }
+        
+        window.onload = displayResult;
+    </script>
+
+</body>
+</html>

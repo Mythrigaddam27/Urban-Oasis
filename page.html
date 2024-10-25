@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Oasis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Urban Oasis</h1>
+        <nav>
+            <ul>
+                <li><a href="page.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="courses.html">Courses</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="search" placeholder="Search..." />
+    </header>
+
+    <section class="hero">
+        <div class="card">
+            <h2>Gardener Image 1</h2>
+            <p>Urban Oasis is dedicated to providing the best gardening solutions.</p>
+        </div>
+        <div class="card">
+            <h2>Gardener Image 2</h2>
+            <p>Explore our wide range of gardening resources and tools.</p>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-icons">
+            <div class="service">
+                <img src="pest-control-icon.png" alt="Pest Control Icon">
+                <p>Pests Control</p>
+            </div>
+            <div class="service">
+                <img src="plant-care-icon.png" alt="Plant Care Icon">
+                <p>Plant Care</p>
+            </div>
+            <div class="service">
+                <img src="plant-designs-icon.png" alt="Designs of Plants Icon">
+                <p>Designs of Plants</p>
+            </div>
+            <div class="service">
+                <img src="compost-icon.png" alt="Compost Icon">
+                <p>Compost Strategies</p>
+            </div>
+            <div class="service">
+                <img src="plant-ideas-icon.png" alt="Plant Ideas Icon">
+                <p>Plant Ideas</p>
+            </div>
+            <div class="service">
+                <img src="irrigation-icon.png" alt="Irrigation Icon">
+                <p>Irrigation Strategies</p>
+            </div>
+        </div>
+    </section>
+
+    <script >
+    document.getElementById('search').addEventListener('input', function() {
+        console.log('Search input: ', this.value);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #5c946e; /* Earthy green tone */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 2px -2px gray;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 30px;
+            background-color: #eae7dc; /* Soft, neutral color */
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #386641; /* Darker green for contrast */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        img {
+            display: block;
+            max-width: 80%;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            nav a {
+                font-size: 16px;
+                margin: 0 10px;
+            }
+        }
+        
+        .back-home-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-home-button:hover {
+            background-color: #388E3C;
+        }
+
+        button {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #5c946e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #386641;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Urban Oasis</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="homepage.html" class="back-home-button">Back to Home</a>
+        </nav>
+    </header>
+    <section class="quiz-content">
+        <h1>Gardening Quiz</h1>
+        <p>Test your knowledge about urban gardening with our quiz.</p>
+        <div id="quiz">
+            <p>Question1: Which of the following plants is best suited for indoor gardening?</p>
+            <button onclick="selectAnswer(1, 'a')">A) Fern</button>
+            <button onclick="selectAnswer(1, 'b')">B) Oak Tree</button>
+            <button onclick="selectAnswer(1, 'c')">C) Cactus</button>
+
+            <p>Question2: What is the process by which plants make their own food?</p>
+            <button onclick="selectAnswer(2, 'a')">A) Pollination</button>
+            <button onclick="selectAnswer(2, 'b')">B) Photosynthesis</button>
+            <button onclick="selectAnswer(2, 'c')">C) Germination</button>
+
+            <p>Question3: Which of the following is NOT a type of soil?</p>
+            <button onclick="selectAnswer(3, 'a')">A) Loam</button>
+            <button onclick="selectAnswer(3, 'b')">B) Sand</button>
+            <button onclick="selectAnswer(3, 'c')">C) Gravel</button>
+
+            <p>Question4: What is the best time of day to water plants?</p>
+            <button onclick="selectAnswer(4, 'a')">A) Morning</button>
+            <button onclick="selectAnswer(4, 'b')">B) Afternoon</button>
+            <button onclick="selectAnswer(4, 'c')">C) Evening</button>
+
+            <p>Question5: Which plant is known for repelling mosquitoes?</p>
+            <button onclick="selectAnswer(5, 'a')">A) Lavender</button>
+            <button onclick="selectAnswer(5, 'b')">B) Basil</button>
+            <button onclick="selectAnswer(5, 'c')">C) Marigold</button>
+
+            <p>Question6: What nutrient in the soil helps plants grow strong roots?</p>
+            <button onclick="selectAnswer(6, 'a')">A) Nitrogen</button>
+            <button onclick="selectAnswer(6, 'b')">B) Phosphorus</button>
+            <button onclick="selectAnswer(6, 'c')">C) Potassium</button>
+
+            <p>Question7: Which gardening tool is used for pruning small branches?</p>
+            <button onclick="selectAnswer(7, 'a')">A) Shovel</button>
+            <button onclick="selectAnswer(7, 'b')">B) Shears</button>
+            <button onclick="selectAnswer(7, 'c')">C) Trowel</button>
+
+            <p>Question8: Which vegetable is a member of the nightshade family?</p>
+            <button onclick="selectAnswer(8, 'a')">A) Carrot</button>
+            <button onclick="selectAnswer(8, 'b')">B) Tomato</button>
+            <button onclick="selectAnswer(8, 'c')">C) Broccoli</button>
+
+            <p>Question9: What is the term for planting a garden that attracts bees, butterflies, and birds?</p>
+            <button onclick="selectAnswer(9, 'a')">A) Wildlife garden</button>
+            <button onclick="selectAnswer(9, 'b')">B) Pollinator garden</button>
+            <button onclick="selectAnswer(9, 'c')">C) Herb garden</button>
+
+            <p>Question10: Which of the following is a cool-season crop?</p>
+            <button onclick="selectAnswer(10, 'a')">A) Lettuce</button>
+            <button onclick="selectAnswer(10, 'b')">B) Tomato</button>
+            <button onclick="selectAnswer(10, 'c')">C) Corn</button>
+        </div>
+        <button onclick="showResult()">Submit Quiz</button>
+
+        <p id="result"></p>
+    </section>
+    
+    <script>
+        const correctAnswers = {
+            1: 'a',
+            2: 'b',
+            3: 'c',
+            4: 'a',
+            5: 'c',
+            6: 'b',
+            7: 'b',
+            8: 'b',
+            9: 'b',
+            10: 'a',
+        };
+    
+        let userAnswers = {};
+    
+        function selectAnswer(question, answer) {
+            userAnswers[question] = answer;
+        }
+    
+        function showResult() {
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+    
+            // Calculate the score
+            for (let question in correctAnswers) {
+                if (userAnswers[question] === correctAnswers[question]) {
+                    score++;
+                }
+            }
+    
+            // Redirect to quizresult.html and pass the score in the URL
+            window.location.href = `quizresult.html?score=${score}&total=${totalQuestions}`;
+        }
+    </script>
+    
+</body>
+</html>

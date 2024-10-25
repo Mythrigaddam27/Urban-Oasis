@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Basic modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 50, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #6b8e23;
+            text-align: left;
+        }
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 6px;
+            background-color: #6b8e23;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #556b2f;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f0;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            color: #2e4d2e;
+            text-align: center;
+        }
+        p {
+            color: #4f634f;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .service-card {
+            background-color: #f5f5dc;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        h3 {
+            margin: 0;
+            color: #6b8e23;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irrigation Strategies - Urban Oasis</title>
+</head>
+<body>
+
+    <!-- Back to Home Button -->
+    <header style="background-color: #8fbc8f; padding: 10px; text-align: center;">
+        <nav>
+            <a href="homepage.html" style="color: white; text-decoration: none;">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Heading for Irrigation Strategies -->
+    <section>
+        <h2>Irrigation Strategies</h2>
+
+        <!-- Service Card to Open Modal -->
+        <div class="service-card" data-service="irrigation-strategies">
+            <h3> Learn About Irrigation Strategies</h3>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="irrigationStrategiesModal" class="modal">
+            <div class="modal-content">
+                <h2>Top Irrigation Techniques</h2>
+
+                <p><strong>1. Drip Irrigation:</strong> Delivers water slowly to plant roots, ideal for water conservation in dry climates.</p>
+
+                <p><strong>2. Mulching:</strong> Applying organic mulch keeps the soil moist, reduces weeds, and conserves water.</p>
+
+                <p><strong>3. Rainwater Harvesting:</strong> Collect and use rainwater for irrigation, reducing your reliance on external water sources.</p>
+
+                <p><strong>4. Soil-Specific Watering:</strong> Sandy soils need frequent watering, while clay soils benefit from less frequent, deep watering.</p>
+
+                <p><strong>5. Smart Irrigation:</strong> Automated systems with sensors adjust watering to your garden's needs, ensuring efficiency.</p>
+
+                <button onclick="closeModal()">Got it!</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Show modal when 'Irrigation Strategies' card is clicked
+        document.querySelector('[data-service="irrigation-strategies"]').addEventListener('click', function() {
+            document.getElementById('irrigationStrategiesModal').style.display = 'block';
+        });
+
+        // Close modal when button is clicked
+        function closeModal() {
+            document.getElementById('irrigationStrategiesModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('irrigationStrategiesModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
